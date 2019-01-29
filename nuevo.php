@@ -75,9 +75,9 @@ if (isset($_POST["selectEstado"])){
 <body>
 <div data-role="page" id="divRegistro" data-theme="a">	
 	<div data-role="header" id="divHeader">
-		<a href="./" class="ui-btn-left" rel="external"><b>LISTA CONTACTOS</b></a>
-		<h1>[ + ]:</h1>
-		<a href="./panel/" class="ui-btn-right" rel="external"><b>PANEL PC</b></a>
+		<a href="./" class="ui-btn-left" rel="external" data-theme="b"><b>LISTA</b></a>
+		<h1>Registrarte:</h1>
+		<a href="./panel/" class="ui-btn-right" rel="external" data-theme="b"><b>PANEL PC</b></a>
 	</div>
 	<div data-role="content" id="divContent">
 		<label><b>Los campos con <font color="#ff0000">*</font> son obligarios.</b></label>

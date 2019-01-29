@@ -48,7 +48,7 @@ if (isset($_POST["usuario"])){
 		</a>
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
 		<form class="form-inline my-2 my-lg-0">		    	
-			<button class="btn btn-outline-info my-2 my-sm-0" type="button" rel="external" onclick="javascript:location.href='../index.php';">
+			<button class="btn btn-outline-info my-2 my-sm-0" type="button" rel="external" onclick="javascript:location.href='../';">
 				<img src="./imgs/movil.png" width="40" height="40" alt="">
 			</button>
 		</form>	
@@ -84,7 +84,7 @@ if (isset($_POST["usuario"])){
 						<input type="submit" name="entrar" id="entrar" class="btn btn-success" role="button" value="I N G R E S A R" />
 					</div>										
 				</form>
-				<h4>REPORTES: [ usuario = reportes1 ] [ contraseña = x ]</h4>
+				<h5>REPORTES: [ usuario = reportes1 ] [ contraseña = x ]</h5>
 			</div>
 			<div class="col-sm-2 sidenav"></div>
 		</div>
