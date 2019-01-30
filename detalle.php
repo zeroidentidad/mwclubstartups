@@ -1,15 +1,15 @@
 <?php
 require "./panel/util/conn.php";
 require "./util/variables_globales.php";
-require "./clases/ListadoMovil.php";
+require "./clases/DetalleMovil.php";
 
-$contactos_ = new ListadoMovil();
+$contactos_ = new DetalleMovil();
 $num = $contactos_->numeroRegistros($conn);
 
 require "util/variables_paginacion.php";
 
 // Validaciones modos:
-if (isset($_GET["modo"])) {
+if (isset($_GET["modo"])&&isset($_GET["co"])) {
 	$modo = $_GET["modo"];
 } else {
 	$modo = "S";
@@ -17,7 +17,8 @@ if (isset($_GET["modo"])) {
 
 // Modo consulta general tabla paginada
 if ($modo=="S") {
-	$datos = $contactos_->select($conn, $inicio_p, $TAMANO_PAGINA);
+	$id_folio = $_GET["co"];
+	$datos = $contactos_->select($conn, $inicio_p, $TAMANO_PAGINA, $id_folio);
 }
 
  // Evitar cache de JS y otros
@@ -42,9 +43,9 @@ if ($modo=="S") {
 <body>
 <div data-role="page" id="divContactos" data-theme="a">	
 	<div data-role="header" id="divHeader">
-		<a href="./nuevo.php" class="ui-btn-left" rel="external" data-theme="b"><b>AGREGAR</b></a>
+		<a href="./" class="ui-btn-left" data-theme="b"><b>LISTA</b></a>
 		<h1>Lista:</h1>
-		<a href="./panel/" class="ui-btn-right" rel="external" data-theme="b"><b>PANEL PC</b></a>
+		<a href="./nuevo.php" class="ui-btn-right" rel="external" data-theme="b"><b>AGREGAR</b></a>
 	</div>
 	<div data-role="content" id="divContent">
 		<label><b>Filtrar listado página:</b></label>
@@ -53,29 +54,33 @@ if ($modo=="S") {
 			<input id="filterTable-input" data-type="search">
 		</form>
 		<?php if ($modo=="S") { ?>	
-		<table data-role="table" id="contactos-table" data-mode="reflow" data-filter="true" data-input="#filterTable-input" class="lista ui-responsive" data-mode="columntoggle">
+		<table data-role="table" id="contactos-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
 			<thead>
 				<tr>
+					<th data-priority="">Año</th>
 					<th data-priority="persist">Estado</th>
 					<th data-priority="1">Profesión</th>
 					<th data-priority="2">Nombre</th>
-					<th data-priority="3">E-mail</th>
-					<th data-priority="4">Celular</th>
-					<th data-priority="5">Nota Emp.</th>
-					<th data-priority="6">Detalle</th>
+					<th data-priority="3">Apellidos</th>
+					<th data-priority="4">E-mail</th>
+					<th data-priority="5">Celular</th>
+					<th data-priority="6">Pais</th>
+					<th data-priority="7">Nota Emp.</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
 					for ($i=0; $i < count($datos); $i++) { 
 					print '<tr>';
+					print '<td>'.$datos[$i]["anio"].'</td>';
 					print '<td>'.$datos[$i]["estado_descripcion"].'</td>';
 					print '<td>'.$datos[$i]["profesion_descripcion"].'</td>';
 					print '<td>'.$datos[$i]["nombre"].'</td>';
-					print '<td><a data-theme="b" href="mailto:'.$datos[$i]["email"].'" class="ui-btn ui-corner-all ui-icon-mail ui-btn-icon-notext ui-btn-inline"></a></td>';
-					print '<td><a data-theme="b" href="tel:'.$datos[$i]["celular"].'" class="ui-btn ui-corner-all ui-icon-phone ui-btn-icon-notext ui-btn-inline"></a></td>';
-					print '<td><font size="1">'.$datos[$i]["nota"].'</font></td>';
-					print '<td><a href="./detalle.php?co='.$datos[$i]["id_folio"].'" class="ui-btn ui-mini">Ver</a></td>';
+					print '<td>'.$datos[$i]["apellidos"].'</td>';
+					print '<td><a href="mailto:'.$datos[$i]["email"].'">'.$datos[$i]["email"].'</a></td>';
+					print '<td><a href="tel:'.$datos[$i]["celular"].'">'.$datos[$i]["celular"].'</a></td>';
+					print '<td>'.$datos[$i]["pais"].'</td>';
+					print '<td>'.$datos[$i]["nota"].'</td>';
 					print '</tr>';
 					}
 				?>
@@ -86,10 +91,10 @@ if ($modo=="S") {
 			}	
 		?>
 		<br>
+		<div data-role="footer">
+			<h1><a href="http://softcun.co.nf"><font color="#00802b">Hecho por <b>Jesus A. Ferrer S.</b></font></a></h1>
+		</div>
 	</div>
-	<div data-role="footer">
-		<h1><a href="http://softcun.co.nf"><font color="#00802b">Hecho por <b>Jesus A. Ferrer S.</b></font></a></h1>
-	</div>	
 </div>	
 </body>
 </html>

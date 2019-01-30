@@ -2,3 +2,22 @@
   color: #006600;
   /*font-size: 1.5em;*/
 }
+.lista thead th,
+.lista tbody tr:last-child {
+    border-bottom: 1px solid #d6d6d6; /* non-RGBA */
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.lista tbody th,
+.lista tbody td {
+    border-bottom: 1px solid #e6e6e6; /* non-RGBA  */
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.lista tbody tr:last-child th,
+.lista tbody tr:last-child td {
+    border-bottom: 0;
+}
+.lista tbody tr:nth-child(odd) td,
+.lista tbody tr:nth-child(odd) th {
+    background-color: #eeeeee; /* non-RGBA  */
+    background-color: rgba(0,0,0,.04);
+}
