@@ -78,7 +78,7 @@ $combo_anios= $reporte_masivo_->combo_anios($conn);
 							<td></td>
 						</tr>
 						<tr>
-							<td>[4] <b>SEXO:</b></td>
+							<td>[3] <b>SEXO:</b></td>
 							<td>
 								<select class="dropdown" style="width:250px;" id="sexo" name="sexo">
 									<option value="">-SELECCIONAR-</option>
@@ -90,7 +90,7 @@ $combo_anios= $reporte_masivo_->combo_anios($conn);
 							<td><input type="button" name="sexo_estado" value="Reporte Estado" class="btn btn-info" role="button" id="sexo_estado"></td>
 						</tr>
 						<tr>
-							<td>[5] <b>PERFIL:</b></td>
+							<td>[4] <b>PERFIL:</b></td>
 							<td>
 								<select class="dropdown" style="width:250px;" id="profesion" name="profesion">
 									<option value="">-SELECCIONAR-</option>
